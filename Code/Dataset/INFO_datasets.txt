@@ -1,0 +1,46 @@
+
+1) molecule_smiles_processed_binary_multi: 
+(fixed duplicates in the sentence)
+
+2) smiles_descriptors_fingerprints_fused_binary_multi: 
+(Mid-Level with min-max scaled of Descriptors)
+
+3) smiles_descriptors_processed_minmax_binary_multi:
+(using minmax scale)
+
+4) smiles_fingerprints_binary_multi:
+(Morgan fingerprints)
+
+########################################
+########################################
+Example using googledrive:
+########################################
+########################################
+
+import google.colab
+print("Running on Google Colab. Mounting Google Drive...")
+
+from google.colab import drive, files
+drive.mount("/content/drive"
+, force_remount=True
+)
+
+main_directory_path = "./drive/My Drive/Group14/"
+data_path = main_directory_path + "Data/"
+dataset_path = data_path + "Dataset/"
+
+dataset_ex = [''] 
+datasets = [f for f in os.listdir(dataset_path) if f.endswith("_binary_multi.csv") and f not in dataset_ex]
+print(datasets)
+
+############
+PRINT:
+['molecule_smiles_processed_binary_multi.csv', 
+'smiles_descriptors_processed_minmax_binary_multi.csv', 
+'smiles_descriptors_fingerprints_fused_binary_multi.csv', 
+'smiles_fingerprints_binary_multi.csv']
+############
+
+dataset = datasets[2]
+df = pd.read_csv(dataset_path + dataset)
+
